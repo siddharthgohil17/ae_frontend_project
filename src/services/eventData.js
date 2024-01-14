@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const BASE_URL_HOSTED = "https://ae-docker-backend-service.onrender.com";
 
-// Use backticks for template literals
+
 const GET_EVENT_LIST_URL = `${BASE_URL_HOSTED}/get_all_events`;
 const ADD_EVENT_URL = `${BASE_URL_HOSTED}/createEvent`;
 const ADD_USER_URL = `${BASE_URL_HOSTED}/add-new-user.php`;
@@ -12,6 +12,7 @@ const GET_USER_LIST_URL = `${BASE_URL_HOSTED}/list-all-users.php`;
 const GET_ALL_CATEGORY = `${BASE_URL_HOSTED}/collect_all_category`;
 const GET_ALL_CITY = `${BASE_URL_HOSTED}/collect_all_city`;
 const GET_EVENT_BY_CATEGORY = `${BASE_URL_HOSTED}/category`;
+const GET_EVENT_BY_CITY =`${BASE_URL_HOSTED}/location`;
 
 class eventService {
   
@@ -20,7 +21,7 @@ class eventService {
   }
 
   static getEventList(pageNum) {
-    // Use backticks for template literals
+  
     return axios.get(`${GET_EVENT_LIST_URL}`+`?pageNo=${pageNum}`);
   }
 
@@ -34,6 +35,9 @@ class eventService {
 
   static getEventByCategory(category) {
     return axios.get(`${GET_EVENT_BY_CATEGORY}`+`/${category}`)
+  }
+  static getEventByLocation(city) {
+    return axios.get(`${GET_EVENT_BY_CITY}`+`?city=${city}`)
   }
 
   static saveUser(user) {

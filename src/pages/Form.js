@@ -3,6 +3,7 @@ import '../styles/Eventform.css';
 import eventService from '../services/eventData';
 import { useNavigate } from 'react-router-dom';
 
+
 const Eventform = () => {
   const [data, setData] = useState({
     event_name: '',
@@ -32,8 +33,7 @@ const Eventform = () => {
     };
 
     fetchCategory();
-  }, []); // Empty dependency array to run the effect once on mount
-
+  }, []); 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -117,7 +117,7 @@ const Eventform = () => {
               placeholder="state"
               value={data.state}
               onChange={handleChange}
-              style={{ width: '25%' }} // Adjust the width as needed
+              style={{ width: '25%' }} 
             />
 
             <input
@@ -127,7 +127,7 @@ const Eventform = () => {
               placeholder="country"
               value={data.country}
               onChange={handleChange}
-              style={{ width: '25%' }} // Adjust the width as needed
+              style={{ width: '25%' }} 
             />
           </div>
 
