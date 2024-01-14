@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header.js';
 import Body from '../components/Body.js';
-import Grid from '../components/EventRow.js';
+import Grid from '../components/EventGrid.js';
 import eventService from '../services/eventData.js';
 import '../styles/Home.css';
 
@@ -90,7 +90,7 @@ const Home = () => {
   };
    const handleCityChange = (selectedCity) => {
     setCity(selectedCity);
-    console.log("city",city);
+    // console.log("city",city);
   };
 
   const handleCategoryChange = (selectedCategory) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Eventform.css';
 import eventService from '../services/eventData';
 import { useNavigate } from 'react-router-dom';
@@ -18,9 +18,23 @@ const Eventform = () => {
     thumb_picture: '',
   });
 
-  const navigate = useNavigate();
+  const [availableCategories, setAvailableCategories] = useState([]);
 
-  const availableCategories = ['Option1', 'Option2', 'Option3'];
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const response = await eventService.getAllCategory();
+        setAvailableCategories(response.data);
+        console.log("response.data", response.data)
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategory();
+  }, []); // Empty dependency array to run the effect once on mount
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,20 +45,18 @@ const Eventform = () => {
       end_time: new Date(data.end_time).toLocaleDateString('en-GB'),
     };
 
-    console.log(formattedData);
     eventService.saveEvent(formattedData)
-      .then((response) => {
+      .then(() => {
         navigate("/");
       })
       .catch((error) => {
-        console.log("error " + error);
+        console.error("Error creating event:", error);
       });
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
-    console.log(data);
   };
 
   return (
@@ -53,7 +65,7 @@ const Eventform = () => {
         <h1>Fill up event details</h1>
         <form onSubmit={handleSubmit} method="POST">
           <div className="form-group">
-            <label htmlFor="event_name">Event Name:</label>
+
             <input
               type="text"
               id="event_name"
@@ -97,7 +109,7 @@ const Eventform = () => {
               required
               style={{ width: '45%' }}
             />
-            
+
             <input
               type="text"
               id="state"
@@ -118,10 +130,10 @@ const Eventform = () => {
               style={{ width: '25%' }} // Adjust the width as needed
             />
           </div>
-         
-     
+
+
           <div className="form-group" style={{ display: 'flex', justifyContent: 'space-between' }}>
-      
+
             <select
               id="category"
               name="category"
@@ -131,12 +143,14 @@ const Eventform = () => {
               style={{ width: '47.3%' }}
             >
               <option value="" disabled>Select a category</option>
-              {availableCategories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
+              {availableCategories.map((categoryObj) => (
+                <option key={categoryObj.category} value={categoryObj.category}>
+                  {categoryObj.category}
                 </option>
               ))}
             </select>
+
+
           </div>
 
           <div className="form-group">
@@ -151,7 +165,7 @@ const Eventform = () => {
             />
           </div>
 
-       
+
 
           <div className="form-group">
             <label htmlFor="organizer_id">Organizer ID:</label>
@@ -189,7 +203,7 @@ const Eventform = () => {
             />
           </div>
 
-       
+
 
           <button type="submit">Create Event</button>
         </form>

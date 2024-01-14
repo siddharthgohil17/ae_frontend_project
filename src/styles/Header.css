@@ -14,7 +14,7 @@
   margin-right: 20px;
   font-size: 1rem;
   color: #ffffff;
-  background-color: #4fad19;
+  
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -22,10 +22,7 @@
   transition: background-color 0.2s;
 }
 
-.create-event-button:hover {
-  background-color: #1b8c11;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+
 
 .header-btn {
   display: flex;
@@ -43,7 +40,7 @@
 .profile-picture {
   width: 45px;
   height: 45px;
-  border-radius: 50%;
+  border-radius: 20%;
   overflow: hidden;
   margin-right: 10px;
 }
@@ -92,4 +89,9 @@
     overflow: hidden;
     margin-right: 10px;
   }
+}
+
+.navbar-logo {
+  max-height: 40px;
+  margin-right: 10px; 
 }
