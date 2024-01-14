@@ -1,0 +1,178 @@
+/* In Card.css (create a new CSS file for the Card component) */
+.event-card {
+  background-color: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin-bottom: 20px;
+  overflow: hidden;
+  width: 90%;
+  transition: transform 0.3s, box-shadow 0.3s; /* Combine transitions */
+}
+
+.event-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.event-image {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 55%;
+}
+
+.event-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.info-section {
+  display: flex;
+}
+
+.date-info {
+  padding: 5%;
+}
+
+.name-info {
+  float: left;
+  padding: 5%;
+}
+
+.card-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  color: #000000;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.card-modal-content {
+  padding: 20px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  width: 1000px;
+  max-width: 1400px; /* Set a maximum width for the modal content */
+  margin: 5% auto auto auto; /* Center the modal content horizontally */
+  position: relative;
+  transform: scale(1);
+  transition: transform 0.1s ease;
+}
+
+.card-modal-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 20px;
+  color: #444;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-close:hover {
+  /* background-color: #ff3838; */
+  scale: 1.5;
+}
+
+.card-modal-content input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.scroll {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.card-modal-content button.btn {
+  padding: 7px 20px;
+  background-color: #7352FF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  margin-top: 5%;
+}
+
+.card-modal-content button.btn:hover {
+  background-color: #3c2994;
+}
+
+@media (max-width: 800px) {
+  .event-card {
+    width: 100%; 
+    transition: none;
+  }
+
+  .event-image {
+    padding-bottom: 100%;
+  }
+
+  .date-info,
+  .name-info {
+    width: 100%; 
+    margin-bottom: 10px;
+  }
+
+  .card-modal-content {
+    width: 300px;
+    margin: auto;
+    max-width: 500px;
+  }
+}
+
+.month-text {
+  color: #FD3B08;
+  text-transform: uppercase;
+  display: block;
+  font-family: "pn-semibold";
+  font-size: 16px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.day-text {
+  color: #555;
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  margin-right: 10px;
+}

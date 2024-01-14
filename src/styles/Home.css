@@ -1,0 +1,27 @@
+.page_handle {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+  
+  .next, .previous {
+    width: 100px;
+    height: 40px;
+    background-color: #007bff; /* Set the default button color */
+    color: #fff; /* Set the default text color */
+  }
+  
+  .next:disabled, .previous:disabled {
+    background-color: #ccc; /* Set the disabled button color */
+    color: #666; /* Set the disabled text color */
+  }
+  
+  .showPageNumber {
+    font-size: 18px; /* Adjust the font size */
+    margin: 0 10px; /* Add margin for spacing */
+  }
+  
+  button {
+    margin: 5px;
+  }
+  
