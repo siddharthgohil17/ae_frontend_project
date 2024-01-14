@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Body.css';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -50,12 +51,11 @@ const Body = ({ eventList, setFilteredEvents, setSearchQuery }) => {
     setSelectedCategory('');
     setSelectedDate(null);
   };
-
+  const navigate = useNavigate();
   const handleCategoryChange = (e) => {
     const selectedValue = e.target.value;
-    setSelectedCategory(selectedValue);
-    window.location.href = "/event" + "?category=" + selectedValue;
-
+   
+    navigate(`/event?category=${selectedValue}`);
   };
 
 
