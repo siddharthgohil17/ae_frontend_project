@@ -13,18 +13,18 @@ const Home = () => {
   const [totalEvents, setTotalEvents] = useState(0);
   const [loading, setLoading] = useState(false);
   const [loadingNewEvents, setLoadingNewEvents] = useState(false);
-  const [category, setCategory] = useState(undefined); // Add this line
-  const [city, setCity] = useState(undefined); // Add this line
-  // const [state, setState] = useState(undefined); // Add this line
-  // const [country, setCountry] = useState(undefined); // Add this line
-  // const [time, setTime] = useState(undefined); // Add this line
+  const [category, setCategory] = useState(undefined); 
+  const [city, setCity] = useState(undefined); 
+  // const [state, setState] = useState(undefined); 
+  // const [country, setCountry] = useState(undefined); 
+  // const [time, setTime] = useState(undefined);
 
   useEffect(() => {
     setLoading(true);
 
     const fetchData = async () => {
       try {
-        // Simulate a delay of 1 second
+      
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         const response = await eventService.getEventList(pageNum);

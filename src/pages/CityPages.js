@@ -2,26 +2,27 @@ import React, { useEffect, useState } from 'react'
 import EventGrid from '../components/EventGrid'
 import eventService from '../services/eventData';
 
-const CategoryPages = () => {
+const CityPage = () => {
 
   const urlParams = new URLSearchParams(window.location.search);
 
-  const category = urlParams.get('category');
- 
+  const category = urlParams.get('city');
+ console.log("City",category);
+
   const [eventList, setEventList] = useState([]);
   const headerText = "Top " + category + " events for you";
 
   useEffect(() => {
-    // setLoading(true);
+   
 
     const fetchData = async () => {
       try {
-        // Simulate a delay of 1 second
+     
         await new Promise(resolve => setTimeout(resolve, 1000));
 
-        const response = await eventService.getEventByCategory(category);
+        const response = await eventService.getEventByLocation(category);
         setEventList(response.data);
-        // setTotalEvents(response.data.length);
+     
       } catch (error) {
         console.error(error);
       } finally {
@@ -40,4 +41,4 @@ const CategoryPages = () => {
   )
 }
 
-export default CategoryPages
+export default CityPage

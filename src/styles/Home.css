@@ -7,18 +7,18 @@
   .next, .previous {
     width: 100px;
     height: 40px;
-    background-color: #007bff; /* Set the default button color */
-    color: #fff; /* Set the default text color */
+    background-color: #007bff; 
+    color: #fff;
   }
   
   .next:disabled, .previous:disabled {
-    background-color: #ccc; /* Set the disabled button color */
-    color: #666; /* Set the disabled text color */
+    background-color: #ccc; 
+    color: #666; 
   }
   
   .showPageNumber {
-    font-size: 18px; /* Adjust the font size */
-    margin: 0 10px; /* Add margin for spacing */
+    font-size: 18px; 
+    margin: 0 10px; 
   }
   
   button {
