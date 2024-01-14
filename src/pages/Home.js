@@ -13,6 +13,11 @@ const Home = () => {
   const [totalEvents, setTotalEvents] = useState(0);
   const [loading, setLoading] = useState(false);
   const [loadingNewEvents, setLoadingNewEvents] = useState(false);
+  const [category, setCategory] = useState(undefined); // Add this line
+  const [city, setCity] = useState(undefined); // Add this line
+  // const [state, setState] = useState(undefined); // Add this line
+  // const [country, setCountry] = useState(undefined); // Add this line
+  // const [time, setTime] = useState(undefined); // Add this line
 
   useEffect(() => {
     setLoading(true);
@@ -35,28 +40,27 @@ const Home = () => {
     fetchData();
   }, [pageNum]);
 
-  useEffect(() => {
-    setLoadingNewEvents(true);
+  // useEffect(() => {
+  //   setLoadingNewEvents(true);
 
-    const fetchNewEvents = async () => {
-      try {
-        // Simulate a delay of 1 second
-        await new Promise(resolve => setTimeout(resolve, 1000));
+  //   const fetchNewEvents = async () => {
+  //     try {
+  //       // Simulate a delay of 1 second
+  //       await new Promise(resolve => setTimeout(resolve, 1000));
 
-        // Implement logic to fetch new events (if needed)
-        // For now, let's assume you have a function like eventService.getNewEvents()
-        const response = await eventService.getNewEvents();
-        // Add logic to update eventList with new events
+  //       // Implement logic to fetch new events (if needed)
+  //       // For now, let's assume you have a function like eventService.getNewEvents()
+  //       const response = await eventService.getNewEvents();
+  //       // Add logic to update eventList with new events
 
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoadingNewEvents(false);
-      }
-    };
-
-    fetchNewEvents();
-  }, [pageNum]); // You may need to update this dependency list based on when you want to fetch new events
+  //     } catch (error) {
+  //       console.error(error);
+  //     } finally {
+  //       setLoadingNewEvents(false);
+  //     }
+  //   };
+  //   fetchNewEvents();
+  // }, [pageNum]); // You may need to update this dependency list based on when you want to fetch new events
 
   useEffect(() => {
     filterEvents();
@@ -84,14 +88,25 @@ const Home = () => {
       setPageNum(pageNum - 1);
     }
   };
+   const handleCityChange = (selectedCity) => {
+    setCity(selectedCity);
+    console.log("city",city);
+  };
+
+  const handleCategoryChange = (selectedCategory) => {
+    setCategory(selectedCategory);
+  };
 
   return (
     <div>
       <Header />
+   
       <Body
         eventList={eventList}
         setFilteredEvents={setFilteredEvents}
         setSearchQuery={setSearchQuery}
+        onCityChange={handleCityChange}
+        onCategoryChange={handleCategoryChange}
       />
       {loading ? (
         <p style={{ textAlign: 'center', margin: '20px' }}>Loading...</p>
