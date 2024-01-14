@@ -1,4 +1,4 @@
-/* In Grid.css */
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -29,23 +29,22 @@ font-size: 24px;
 
 @media (max-width: 1100px) {
   .grid-container {
-    grid-template-columns: repeat(3, 1fr); /* 2 cards per row */
+    grid-template-columns: repeat(3, 1fr); 
     padding: 5px;
   }
 }
 
-/* For tablets (768px) */
+
 @media (max-width: 768px) {
   .grid-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
-    padding: 5px;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* For phones (576px) */
+
 @media (max-width: 576px) {
   .grid-container {
-    grid-template-columns: 1fr; /* 1 card per row */
+    grid-template-columns: 1fr;
     padding: 3px;
     margin-left: auto;
   }
