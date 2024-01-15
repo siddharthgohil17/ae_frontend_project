@@ -3,6 +3,7 @@ import '../styles/Card.css';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 const Card = ({ event }) => {
   const [imageError, setImageError] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
