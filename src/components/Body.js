@@ -3,24 +3,38 @@ import '../styles/Body.css';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import eventService from '../services/eventData';
 
 const Body = ({ eventList, setFilteredEvents, setSearchQuery }) => {
-  const uniqueCities = [...new Set(eventList.map((event) => event.city))];
-  const uniqueCategories = [...new Set(eventList.map((event) => event.category))];
-
-  const cityList = uniqueCities.map((city, index) => ({
-    id: index + 1,
-    name: city,
-  }));
-
-  const categoryList = uniqueCategories.map((category, index) => ({
-    id: index + 1,
-    name: category,
-  }));
+  const [uniqueCities, setUniqueCities] = useState([]);
+  const [uniqueCategories, setUniqueCategories] = useState([]);
 
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
+
+  useEffect(() => {
+    getAllCity();
+    getAllCategory();
+  }, []); 
+
+  const getAllCity = async () => {
+    try {
+      const response = await eventService.getAllCity();
+      setUniqueCities(response.data);
+    } catch (error) {
+      console.error('Error fetching cities:', error);
+    }
+  };
+
+  const getAllCategory = async () => {
+    try {
+      const response = await eventService.getAllCategory();
+      setUniqueCategories(response.data);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  };
 
   useEffect(() => {
     filterEvents();
@@ -52,18 +66,26 @@ const Body = ({ eventList, setFilteredEvents, setSearchQuery }) => {
   const navigate = useNavigate();
 
   const handleCityChange = (e) => {
-  
     const selectedValue = e.target.value;
     setSelectedCity(selectedValue);
     navigate(`/location?city=${selectedValue}`);
   };
 
   const handleCategoryChange = (e) => {
-   
     const selectedValue = e.target.value;
     setSelectedCategory(selectedValue);
     navigate(`/event?category=${selectedValue}`);
   };
+
+  const cityList = uniqueCities.map((city) => ({
+    id: city.city ? city.city : city,
+    name: city.city ? city.city : city,
+  }));
+
+  const categoryList = uniqueCategories.map((category) => ({
+    id: category.category ? category.category : category,
+    name: category.category ? category.category : category,
+  }));
 
   return (
     <div className="homesection">

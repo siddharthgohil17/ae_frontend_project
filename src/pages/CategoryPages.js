@@ -12,11 +12,11 @@ const CategoryPages = () => {
   const headerText = "Top " + category + " events for you";
 
   useEffect(() => {
-    // setLoading(true);
+  
 
     const fetchData = async () => {
       try {
-        // Simulate a delay of 1 second
+     
         await new Promise(resolve => setTimeout(resolve, 1000));
 
         const response = await eventService.getEventByCategory(category);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Eventform.css';
 import eventService from '../services/eventData';
 import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from "react-hot-toast";
 
 
 const Eventform = () => {
@@ -47,9 +48,11 @@ const Eventform = () => {
 
     eventService.saveEvent(formattedData)
       .then(() => {
+        toast.success("Successfully created event"+`${data.event_name}`)
         navigate("/");
       })
       .catch((error) => {
+        toast.success("Error:Please try after some time")
         console.error("Error creating event:", error);
       });
   };
@@ -202,8 +205,6 @@ const Eventform = () => {
               onChange={handleChange}
             />
           </div>
-
-
 
           <button type="submit">Create Event</button>
         </form>
