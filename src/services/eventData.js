@@ -13,6 +13,7 @@ const GET_ALL_CATEGORY = `${BASE_URL_HOSTED}/collect_all_category`;
 const GET_ALL_CITY = `${BASE_URL_HOSTED}/collect_all_city`;
 const GET_EVENT_BY_CATEGORY = `${BASE_URL_HOSTED}/category`;
 const GET_EVENT_BY_CITY =`${BASE_URL_HOSTED}/location`;
+const GET_EVENT_BY_TIME=`${BASE_URL_HOSTED}/time`;
 
 class eventService {
   
@@ -38,6 +39,9 @@ class eventService {
   }
   static getEventByLocation(city) {
     return axios.get(`${GET_EVENT_BY_CITY}`+`?city=${city}`)
+  }
+  static getEventByTime(time){
+    return axios.get(`${GET_EVENT_BY_TIME}`+`?time=${time}`)
   }
 
   static saveUser(user) {

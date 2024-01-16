@@ -39,23 +39,27 @@ const Body = ({ eventList, setFilteredEvents, setSearchQuery }) => {
   useEffect(() => {
     filterEvents();
   }, [selectedCity, selectedCategory, selectedDate, eventList]);
-
   const filterEvents = () => {
     const filtered = eventList.filter((event) => {
       const cityMatch = !selectedCity || event.city === selectedCity;
       const categoryMatch = !selectedCategory || event.category === selectedCategory;
-
+  
       const eventDate =
-        event.start_time && new Date(event.start_time.split('/').reverse().join('-'));
-
-      const dateMatch =
-        !selectedDate || (!eventDate && false) || (eventDate && eventDate >= selectedDate);
-
+      event.start_time && new Date(event.start_time.split('/').reverse().join('-'));
+      
+    const dateMatch =
+      !selectedDate ||
+      (!eventDate && false) ||
+      (eventDate && eventDate >= selectedDate);
+  
+  
+  
       return cityMatch && categoryMatch && dateMatch;
     });
-
+  
     setFilteredEvents(filtered);
   };
+  
 
   const clearFilters = () => {
     setSelectedCity('');
