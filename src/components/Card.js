@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Card.css';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
+import businessthum from "../images/business.jpg"
+import fashionthum from "../images/fashion.jpg"
+import gamingthum from "../images/fashion.jpg"
+import musicthum from "../images/music.jpg"
+import technologythum from "../images/technology.jpg"
 
 
 const Card = ({ event }) => {
@@ -14,6 +19,16 @@ const Card = ({ event }) => {
 
   const fallbackImage =
     'https://img.lovepik.com/photo/48002/9166.jpg_wh860.jpg';
+    const categoryThumbnails = {
+      'Business': businessthum,
+      'Fashion': fashionthum,
+      'Gaming': gamingthum,
+      'Music': musicthum,
+      'Technology': technologythum,
+    };
+  
+    // Get the thumbnail based on the category or fallback to the URL
+    const thumbnail = categoryThumbnails[event.category] || fallbackImage;
 
   const image_url = imageError ? fallbackImage : event.banner_image || fallbackImage;
 
@@ -76,7 +91,7 @@ const Card = ({ event }) => {
     <div className='card'>
       <div className="event-card" onClick={handleEditButtonClick}>
         <div className="event-image">
-          <img src={image_url} alt={event.event_name} onError={handleImageError} />
+          <img src={thumbnail} alt={event.event_name} onError={handleImageError} />
         </div>
         <div className="event-details">
           <div className='info-section'>
