@@ -17,8 +17,7 @@ const Card = ({ event }) => {
   const navigate = useNavigate();
   const { loginWithRedirect, isAuthenticated } = useAuth0();
 
-  const fallbackImage =
-    'https://img.lovepik.com/photo/48002/9166.jpg_wh860.jpg';
+  const fallbackImage ='https://img.lovepik.com/photo/48002/9166.jpg_wh860.jpg';
     const categoryThumbnails = {
       'Business': businessthum,
       'Fashion': fashionthum,
@@ -30,7 +29,7 @@ const Card = ({ event }) => {
     // Get the thumbnail based on the category or fallback to the URL
     const thumbnail = categoryThumbnails[event.category] || fallbackImage;
 
-  const image_url = imageError ? fallbackImage : event.banner_image || fallbackImage;
+  const image_url = imageError ? thumbnail : event.thumb_picture || fallbackImage;
 
   const handleImageError = () => {
     setImageError(true);
@@ -91,7 +90,7 @@ const Card = ({ event }) => {
     <div className='card'>
       <div className="event-card" onClick={handleEditButtonClick}>
         <div className="event-image">
-          <img src={thumbnail} alt={event.event_name} onError={handleImageError} />
+          <img src={image_url} alt={event.event_name} onError={handleImageError} />
         </div>
         <div className="event-details">
           <div className='info-section'>
