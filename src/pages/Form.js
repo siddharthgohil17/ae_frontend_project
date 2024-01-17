@@ -16,7 +16,6 @@ const Eventform = () => {
     state: '',
     country: '',
     organizer_id: '',
-    event_banner: '',
     thumb_picture: '',
   });
 
@@ -179,17 +178,7 @@ const Eventform = () => {
         />
       </div>
 
-      <div className="form-group">
-        <label htmlFor="event_banner">Event Banner Link:</label>
-        <input
-          type="text"
-          id="event_banner"
-          name="event_banner"
-          placeholder="Event Banner Link"
-          value={data.event_banner}
-          onChange={handleChange}
-        />
-      </div>
+  
 
       <div className="form-group">
         <label htmlFor="thumb_picture">Thumb Picture Link:</label>
