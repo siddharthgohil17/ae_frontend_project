@@ -94,10 +94,11 @@ const Body = ({ eventList, setFilteredEvents, setSearchQuery }) => {
   return (
     <div className="homesection">
       <div className="content">
-        <h1 className="title" style={{ marginBottom: '0px' }}>
-          <span style={{ color: '#21c0e8' }}>Live.</span> Don't Just Exist.
+        <h1 className="title" >
+          <span className='quote'  style={{ color: '#21c0e8' }}>Live.</span> Don't Just Exist.
         </h1>
         <p className="sub-title">Discover the Most happening events around you</p>
+        
         <div className="search-bar">
           <input
             className="search-input"
